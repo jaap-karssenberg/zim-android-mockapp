@@ -1,3 +1,4 @@
+#!/usr/bin/python
 
 from wsgiref import simple_server
 
