@@ -1,4 +1,11 @@
+#!/usr/bin/python
+
+print('ZIMDEBUGCLIENT')
+
 __version__ = '0.1'
+
+import sys
+import time
 
 from kivy.app import App
 
@@ -12,7 +19,6 @@ WebView = autoclass('android.webkit.WebView')
 WebViewClient = autoclass('android.webkit.WebViewClient')
 activity = autoclass('org.renpy.android.PythonActivity').mActivity
 
-
 class Wv(Widget):
     def __init__(self, **kwargs):
         super(Wv, self).__init__(**kwargs)
@@ -23,18 +29,22 @@ class Wv(Widget):
         webview = WebView(activity)
         settings = webview.getSettings()
         settings.setJavaScriptEnabled(True)
-        settings.setUseWideViewPort(True) # enables viewport html meta tags
-        settings.setLoadWithOverviewMode(True) # uses viewport
-        settings.setSupportZoom(True) # enables zoom
-        settings.setBuiltInZoomControls(True) # enables zoom controls
+        #settings.setUseWideViewPort(True) # enables viewport html meta tags
+        #settings.setLoadWithOverviewMode(True) # uses viewport
+        #settings.setSupportZoom(True) # enables zoom
+        #settings.setBuiltInZoomControls(True) # enables zoom controls
         wvc = WebViewClient()
         webview.setWebViewClient(wvc)
         activity.setContentView(webview)
-        webview.loadUrl('http://localhost:23948')  # use 10.0.2.2 on Android emulators instead of localhost
+        webview.loadUrl('http://localhost:23950')
+        #webview.loadUrl('http://10.0.2.2:23950')  # use 10.0.2.2 on Android emulators to access local host of PARENT computer
+        #webview.loadData(html, "text/html", "utf-8")  # to directly load html content
+
 
 class WebviewApp(App):
     def build(self):
         return Wv()
+
 
 class WebserverService(App):
     def build(self):
@@ -51,7 +61,16 @@ class WebserverService(App):
             self.service.stop()
             self.service = None
 
+    def on_stop(self):  # TODO: does not work! We need to close the service on leaving!
+        self.stop_service()
+
 
 if __name__ == '__main__':
-    WebserverService().run()
+    webserver = WebserverService()
+    webserver.run()
+    time.sleep(0.1)
+    webserver.stop_service()  # workaround because service might still be running on exit
+    time.sleep(0.5)
+    webserver.start_service()
+    time.sleep(0.5)
     WebviewApp().run()
