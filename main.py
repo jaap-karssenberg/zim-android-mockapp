@@ -30,7 +30,7 @@ class Wv(Widget):
         wvc = WebViewClient()
         webview.setWebViewClient(wvc)
         activity.setContentView(webview)
-        webview.loadUrl('http://localhost:8081')  # use 10.0.2.2 on Android emulators instead of localhost
+        webview.loadUrl('http://localhost:23948')  # use 10.0.2.2 on Android emulators instead of localhost
 
 class WebviewApp(App):
     def build(self):
@@ -41,13 +41,10 @@ class WebserverService(App):
         self.start_service()
 
     def start_service(self):
-        if platform == 'android':
-            from android import AndroidService
-            service = AndroidService('ZimAndroidWebserver', 'running')  # this will launch what is in the folder service/main.py as a service
-            service.start('ZimAndroidWebserver service started')
-            self.service = service
-        else:
-            
+        from android import AndroidService
+        service = AndroidService('ZimAndroidWebserver', 'running')  # this will launch what is in the folder service/main.py as a service
+        service.start('ZimAndroidWebserver service started')
+        self.service = service
 
     def stop_service(self):
         if self.service:

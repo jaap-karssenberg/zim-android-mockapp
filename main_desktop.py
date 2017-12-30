@@ -41,6 +41,9 @@ def start_server():
 
     logger.debug("Server started")
 
-if __name__ == '__main__':
+def main():
     start_server()  # need to start the server as a thread ; in Android this is unnecessary as it will be started as a (background) service
     webview.create_window("ZimAndroid", "http://localhost:23948", min_size=(640, 480))  # this is a blocking command, nothing can be executed after! (or only in a thread launched before)
+
+if __name__ == '__main__':
+    main()
