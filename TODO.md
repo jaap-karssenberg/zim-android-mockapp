@@ -21,6 +21,8 @@ WYSIWYG would be perfect but will be challenging. Basically, there are two ways:
 
 This last option seems the best. The idea would be to do both block-level and inline-level markup parsing, by sending the changes back to the webserver, which would add the content to the origin Zim note and convert to HTML to send back to the current window, in order to show a nicely formatted text.
 
+BUT: need to find an ergonomic way to enable contentEditable=True, because it cannot be all the time enabled (else links are unclickable!) -> an "Edit mode" link, at the top of the screen and which would always be contentEditable=False, would be a good way! Or by double tapping a text area (and double tapping again would disable).
+
 The best tutorial is probably this one:
 
 [DIY tutorial using contentEditable property of div and MutationObserver](http://pothibo.com/2015/3/building-a-markdown-editor) ([mirror here](https://web.archive.org/web/20170616192810/http://pothibo.com/2015/3/building-a-markdown-editor))
