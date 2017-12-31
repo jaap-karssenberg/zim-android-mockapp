@@ -15,7 +15,7 @@
 ## Zim editing
 
 * WYSIWYG would be perfect but will be challenging. Can try one of the following:
-  * [DIY tutorial using contentEditable property of div and MutationObserver](http://pothibo.com/2015/3/building-a-markdown-editor) ([mirror here][21])
+  * [DIY tutorial using contentEditable property of div and MutationObserver](http://pothibo.com/2015/3/building-a-markdown-editor) ([mirror here](https://web.archive.org/web/20170616192810/http://pothibo.com/2015/3/building-a-markdown-editor))
   * A Python based one to convert back and forth to Markdown (can be a good inspiration): http://md-wysiwyg.sourceforge.net/
   * https://github.com/IonicaBizau/medium-editor-markdown
   * https://github.com/sofish/pen#readme
