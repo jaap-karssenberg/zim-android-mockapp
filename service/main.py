@@ -2,6 +2,9 @@
 
 print('ZIMDEBUGSERVICE')
 
+import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__)))
+
 from wsgiref import simple_server
 
 from app import MockApp

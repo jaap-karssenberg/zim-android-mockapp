@@ -72,5 +72,5 @@ if __name__ == '__main__':
     webserver.stop_service()  # workaround because service might still be running on exit
     time.sleep(0.5)
     webserver.start_service()
-    time.sleep(0.5)
+    time.sleep(1.0)  # wait a long time just to make extra sure the webserver is running before showing the webview (else there is no refresh button!)
     WebviewApp().run()
