@@ -1,3 +1,3 @@
 title=ZimAndroid
-author=Stephen Larroque
+author=Jaap Karssenberg & Stephen Larroque
 orientation=portrait
